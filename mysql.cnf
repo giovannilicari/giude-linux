@@ -1,0 +1,91 @@
+#
+# The MySQL database server configuration file.
+#
+# You can copy this to one of:
+# - "/etc/mysql/my.cnf" to set global options,
+# - "~/.my.cnf" to set user-specific options.
+# 
+# One can use all long options that the program supports.
+# Run program with --help to get a list of available options and with
+# --print-defaults to see which it would actually understand and use.
+#
+# For explanations see
+# http://dev.mysql.com/doc/mysql/en/server-system-variables.html
+
+#
+# * IMPORTANT: Additional settings that can override those from this file!
+#   The files must end with '.cnf', otherwise they'll be ignored.
+#
+
+!includedir /etc/mysql/conf.d/
+!includedir /etc/mysql/mysql.conf.d/
+
+[client]
+default-character-set = utf8mb4
+
+[mysqld]
+# MOODLE
+slow_query_log = 1
+innodb_fast_shutdown = 0
+innodb_file_format = Barracuda
+innodb_file_per_table = 1
+innodb_large_prefix
+character-set-server = utf8mb4
+collation-server = utf8mb4_unicode_ci
+skip-character-set-client-handshake
+performance_schema = on
+
+# GENERAL
+max_connections = 4000
+table_open_cache = 100000
+table_open_cache_instances = 64
+tmp_table_size = 33554432
+max_heap_table_size = 33554432
+# max_allowed_packet = 64M
+
+# CACHE 
+query_cache_type = 0
+query_cache_size = 0
+query_cache_min_res_unit = 2K
+# query_cache_limit = 1M
+
+# BUFFERS
+key_buffer_size = 32M
+sort_buffer_size = 256K
+join_buffer_size = 256K
+innodb_buffer_pool_size = 12G
+innodb_buffer_pool_instances = 12
+innodb_log_buffer_size = 64M
+
+# FILES
+innodb_file_per_table
+innodb_log_file_size = 1G
+innodb_log_files_in_group = 2
+innodb_open_files = 4000
+
+# INNODB
+innodb_doublewrite= 1
+innodb_stats_on_metadata = 0
+innodb_thread_concurrency = 0
+innodb_flush_method = O_DIRECT_NO_FSYNC
+innodb_flush_log_at_trx_commit = 0
+innodb_max_dirty_pages_pct = 90
+innodb_max_dirty_pages_pct_lwm = 10
+innodb_lru_scan_depth = 2048
+innodb_page_cleaners = 4
+innodb_use_native_aio = 1
+innodb_stats_persistent = 1
+# innodb_spin_wait_delay = 96
+innodb_adaptive_flushing = 1
+innodb_flush_neighbors = 0
+innodb_read_io_threads = 16
+innodb_write_io_threads = 16
+innodb_io_capacity = 1500
+innodb_io_capacity_max = 2500
+innodb_purge_threads = 4
+innodb_adaptive_hash_index = 0
+
+max_prepared_stmt_count = 1000000
+
+[mysql]
+default-character-set = utf8mb4
