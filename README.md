@@ -1,2 +1,2 @@
-# guida-linux
-Manuale di Linux Admin
+# LINUX ADMIN
+Manuale di Linux Administrator
